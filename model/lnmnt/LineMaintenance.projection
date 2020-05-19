@@ -1,0 +1,56 @@
+projection LineMaintenance;
+component LNMNT;
+layer Core;
+description "Put some useful description here ...";
+capability Offline;
+category Users;
+
+--------------------------------- FRAGMENTS ---------------------------------
+
+----------------------------- MAIN ENTRY POINTS -----------------------------
+
+entityset AircraftSet for Aircraft;
+entityset FlightSet for Flight;
+
+@Override
+entity Aircraft {
+
+   syncpolicy Batch {
+      syncschedule = daily at 00:00;
+   }
+
+}
+@Override
+entity Flight {
+
+   syncpolicy Batch {
+      syncschedule = daily at 00:00;
+   }
+
+}
+
+------------------------------ ENTITY DETAILS -------------------------------
+
+
+------------------------------- ENUMERATIONS --------------------------------
+
+
+---------------------------------- QUERIES ----------------------------------
+
+
+---------------------------------- ACTIONS ----------------------------------
+
+
+--------------------------------- FUNCTIONS ---------------------------------
+
+
+-------------------------------- STRUCTURES ---------------------------------
+
+
+--------------------------------- VIRTUALS ----------------------------------
+
+
+--------------------------------- SUMMARIES ---------------------------------
+
+
+-------------------------------- SINGLETONS ---------------------------------

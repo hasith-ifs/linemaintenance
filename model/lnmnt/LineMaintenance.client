@@ -1,0 +1,125 @@
+client LineMaintenance;
+component LNMNT;
+layer Core;
+projection LineMaintenance;
+target AurenaNative;
+
+--------------------------------- FRAGMENTS ---------------------------------
+
+----------------------------- NAVIGATOR ENTRIES -----------------------------
+
+navigator {
+   entry LmmAppNavEntry  parent FndmobNavigator.AurenaNativeApps at index 1 {
+      label = "Dashboard";
+      page Dashboard;
+   }
+
+}
+
+-------------------------------- MAIN PAGES ---------------------------------
+
+page Dashboard {
+   label = "Dashboard";
+   command AircraftListCommand;
+   command FlightListCommand;
+}
+
+page AircraftListPage using AircraftSet {
+   label = "Aircrafts";
+   list AircraftsList;
+}
+
+page FlightsListPage using FlightSet {
+   label = "Flights";
+
+}
+
+
+--------------------------------- COMMANDS ----------------------------------
+
+command AircraftListCommand {
+   label = "Aircrafts";
+   execute {
+      if [true] {
+         navigate AircraftListPage;
+      }
+   }
+}
+command FlightListCommand {
+   label = "Flights";
+   execute {
+      if [true] {
+         navigate FlightsListPage;
+      }
+   }
+}
+--------------------------------- SELECTORS ---------------------------------
+
+
+---------------------------------- GROUPS -----------------------------------
+
+
+----------------------------------- LISTS -----------------------------------
+
+list AircraftsList for Aircraft {
+   label = "Aircrafts";
+   card AircraftsListCard;
+}
+
+card AircraftsListCard for Aircraft {
+
+   label = "${RegistrationCode}";
+   field LineNumber;
+   field VariableNumber;
+   field FinNumber;
+   field IpcEffectivityCode;
+   field Manufacturer;
+   field PartNumber;
+   field SerialNumber;
+}
+
+list FlightsList for Flight {
+   label = "Flights";
+   card FlightsListCard;
+}
+card FlightsListCard for Flight {
+   label = "${MasterFlightNumber}";
+   field LegNo;
+   field IsHistoric;
+   field SchedDepartureDate;
+   field ActualDepartureDate;
+   field DepartureDate;
+   field OffDate;
+   field SchedArrivalDate;
+   field ActualArrivalDate;
+   field OnDate;
+   field ArrivalGate;
+
+}
+
+
+---------------------------------- DIALOGS ----------------------------------
+
+
+-------------------------------- SINGLETONS ---------------------------------
+
+
+---------------------------------- CHARTS -----------------------------------
+
+
+--------------------------------- CALENDERS ---------------------------------
+
+
+---------------------------------- SHEETS -----------------------------------
+
+
+----------------------------- STATE INDICATORS ------------------------------
+
+
+----------------------------------- TREES -----------------------------------
+
+
+---------------------------------- PLUGINS ----------------------------------
+
+
+------------------------------- IMAGE VIEWERS -------------------------------

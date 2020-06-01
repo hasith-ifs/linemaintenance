@@ -22,14 +22,14 @@
                </PROPERTIES>
                <LOCATION>
                   <POINT>
-                     <X>153</X>
-                     <Y>130</Y>
+                     <X>223</X>
+                     <Y>138</Y>
                   </POINT>
                </LOCATION>
                <SIZE>
                   <POINT>
                      <X>128</X>
-                     <Y>209</Y>
+                     <Y>190</Y>
                   </POINT>
                </SIZE>
             </DIAGRAM_NODE>
@@ -51,7 +51,7 @@
                <LOCATION>
                   <POINT>
                      <X>549</X>
-                     <Y>101</Y>
+                     <Y>93</Y>
                   </POINT>
                </LOCATION>
                <SIZE>
@@ -89,11 +89,11 @@
                <CONTROL_POINTS>
                   <POINT>
                      <X>548</X>
-                     <Y>240</Y>
+                     <Y>234</Y>
                   </POINT>
                   <POINT>
-                     <X>280</X>
-                     <Y>234</Y>
+                     <X>350</X>
+                     <Y>232</Y>
                   </POINT>
                </CONTROL_POINTS>
             </DIAGRAM_EDGE>

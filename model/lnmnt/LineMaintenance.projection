@@ -8,30 +8,21 @@ category Users;
 --------------------------------- FRAGMENTS ---------------------------------
 
 ----------------------------- MAIN ENTRY POINTS -----------------------------
-
 entityset AircraftSet for Aircraft;
-entityset FlightSet for Flight;
+------------------------------ ENTITY DETAILS -------------------------------
 
 @Override
 entity Aircraft {
 
    syncpolicy Batch {
-      syncschedule = daily at 00:00;
+      syncschedule = daily at 02:00;
+   }
+   crud = Create, Read, Update;
+   attribute AircraftId Number {
+      required = [false];
    }
 
 }
-@Override
-entity Flight {
-
-   syncpolicy Batch {
-      syncschedule = daily at 00:00;
-   }
-
-}
-
------------------------------- ENTITY DETAILS -------------------------------
-
-
 ------------------------------- ENUMERATIONS --------------------------------
 
 

@@ -26,17 +26,19 @@ page Dashboard {
 
 page AircraftListPage using AircraftSet {
    label = "Aircrafts";
-   list AircraftsList;
+   list AircraftsList {
+      details = AircraftDetailViewPage(AircraftId);
+   }
 }
-
-page FlightsListPage using FlightSet {
-   label = "Flights";
+singleton AircraftSingleton for Aircraft;
+page AircraftDetailViewPage using AircraftSet {
+   label = "Aircraft Detail";
+   singleton AircraftSingleton;
+   group AircraftDetailList;
 
 }
-
 
 --------------------------------- COMMANDS ----------------------------------
-
 command AircraftListCommand {
    label = "Aircrafts";
    execute {
@@ -47,17 +49,24 @@ command AircraftListCommand {
 }
 command FlightListCommand {
    label = "Flights";
-   execute {
-      if [true] {
-         navigate FlightsListPage;
-      }
-   }
+   icon = "geomap-alt";
+
 }
+
 --------------------------------- SELECTORS ---------------------------------
 
 
 ---------------------------------- GROUPS -----------------------------------
+group AircraftDetailList for Aircraft {
 
+   field RegistrationCode;
+   field LineNumber;
+   field VariableNumber;
+   field FinNumber;
+   field Manufacturer;
+   field PartNumber;
+   field SerialNumber;
+}
 
 ----------------------------------- LISTS -----------------------------------
 
@@ -72,31 +81,10 @@ card AircraftsListCard for Aircraft {
    field LineNumber;
    field VariableNumber;
    field FinNumber;
-   field IpcEffectivityCode;
    field Manufacturer;
    field PartNumber;
    field SerialNumber;
 }
-
-list FlightsList for Flight {
-   label = "Flights";
-   card FlightsListCard;
-}
-card FlightsListCard for Flight {
-   label = "${MasterFlightNumber}";
-   field LegNo;
-   field IsHistoric;
-   field SchedDepartureDate;
-   field ActualDepartureDate;
-   field DepartureDate;
-   field OffDate;
-   field SchedArrivalDate;
-   field ActualArrivalDate;
-   field OnDate;
-   field ArrivalGate;
-
-}
-
 
 ---------------------------------- DIALOGS ----------------------------------
 

@@ -9,15 +9,16 @@ category Users;
 
 ----------------------------- MAIN ENTRY POINTS -----------------------------
 entityset AircraftSet for Aircraft;
+
 ------------------------------ ENTITY DETAILS -------------------------------
 
 @Override
 entity Aircraft {
 
+   crud = Create, Read, Update, Delete;
    syncpolicy Batch {
-      syncschedule = daily at 02:00;
+      syncschedule = daily at 00:00;
    }
-   crud = Create, Read, Update;
    attribute AircraftId Number {
       required = [false];
    }

@@ -9,20 +9,28 @@ target AurenaNative;
 ----------------------------- NAVIGATOR ENTRIES -----------------------------
 
 navigator {
-   entry LmmAppNavEntry  parent FndmobNavigator.AurenaNativeApps at index 1 {
-      label = "Dashboard";
-      page Dashboard;
+   entry AircraftManNavEntry  parent FndmobNavigator.AurenaNativeApps at index 1 {
+      label = "Aircraft Management";
+      entry AircraftsNavEntry;
+      entry FlightsNavEntry;
    }
+
+   entry AircraftsNavEntry {
+      label = "Aircrafts";
+      page AircraftListPage;
+      icon = "clipboard";
+   }
+
+   entry FlightsNavEntry {
+      label = "Flights";
+      page AircraftListPage;
+      icon = "geomap-alt";
+   }
+
 
 }
 
 -------------------------------- MAIN PAGES ---------------------------------
-
-page Dashboard {
-   label = "Dashboard";
-   command AircraftListCommand;
-   command FlightListCommand;
-}
 
 page AircraftListPage using AircraftSet {
    label = "Aircrafts";
@@ -33,6 +41,7 @@ page AircraftListPage using AircraftSet {
 singleton AircraftSingleton for Aircraft;
 page AircraftDetailViewPage using AircraftSet {
    label = "Aircraft Detail";
+   selector  Selector;
    singleton AircraftSingleton;
    group AircraftDetailList;
 
@@ -41,31 +50,63 @@ page AircraftDetailViewPage using AircraftSet {
 --------------------------------- COMMANDS ----------------------------------
 command AircraftListCommand {
    label = "Aircrafts";
+   icon = "geomap-alt";
+   style = IconAndText;
    execute {
       if [true] {
          navigate AircraftListPage;
       }
    }
 }
-command FlightListCommand {
-   label = "Flights";
-   icon = "geomap-alt";
 
-}
 
 --------------------------------- SELECTORS ---------------------------------
 
+selector Selector for Aircraft {
+   label = "${RegistrationCode} , ${Manufacturer} ";
+   field RegistrationCode;
+   field Manufacturer;
+   badge AircraftType {
+      style = TextOnly;
+      emphasis Progress2 = [AircraftType = "Light"];
+      emphasis Progress5 = [AircraftType = "Medium"];
+      emphasis Alert = [AircraftType = "Heavy"];
+   }
+
+}
 
 ---------------------------------- GROUPS -----------------------------------
 group AircraftDetailList for Aircraft {
 
-   field RegistrationCode;
-   field LineNumber;
-   field VariableNumber;
-   field FinNumber;
-   field Manufacturer;
-   field PartNumber;
-   field SerialNumber;
+   label = "${RegistrationCode}";
+
+   field RegistrationCode {
+      editable = [true];
+   }
+
+   field LineNumber {
+      editable = [true];
+   }
+
+   field VariableNumber {
+      editable = [true];
+   }
+   field FinNumber {
+      editable = [true];
+   }
+   field Manufacturer {
+      editable = [true];
+   }
+   field PartNumber {
+      editable = [true];
+   }
+   field SerialNumber {
+      editable = [true];
+   }
+   field AircraftType {
+      editable = [true];
+   }
+
 }
 
 ----------------------------------- LISTS -----------------------------------
@@ -84,6 +125,14 @@ card AircraftsListCard for Aircraft {
    field Manufacturer;
    field PartNumber;
    field SerialNumber;
+   badge AircraftType {
+      style = TextOnly;
+      emphasis Progress2 = [AircraftType = "Light"];
+      emphasis Progress5 = [AircraftType = "Medium"];
+      emphasis Alert = [AircraftType = "Heavy"];
+   }
+
+
 }
 
 ---------------------------------- DIALOGS ----------------------------------

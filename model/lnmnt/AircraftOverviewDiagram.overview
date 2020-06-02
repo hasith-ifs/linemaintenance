@@ -29,7 +29,7 @@
                <SIZE>
                   <POINT>
                      <X>128</X>
-                     <Y>190</Y>
+                     <Y>209</Y>
                   </POINT>
                </SIZE>
             </DIAGRAM_NODE>
@@ -89,11 +89,11 @@
                <CONTROL_POINTS>
                   <POINT>
                      <X>548</X>
-                     <Y>234</Y>
+                     <Y>235</Y>
                   </POINT>
                   <POINT>
                      <X>350</X>
-                     <Y>232</Y>
+                     <Y>240</Y>
                   </POINT>
                </CONTROL_POINTS>
             </DIAGRAM_EDGE>
